@@ -80,19 +80,33 @@ public class Conta {
 			case 1:
 				this.dadosConta();
 				break;
+				
 			case 2:
 				this.saldo();
 				break;
+				
 			case 3:
 				System.out.println("Valor para saque: R$");
 				float valorSaque = leia.nextFloat();
 				this.sacar(valorSaque);
 				break;
+				
 			case 4:
 				System.out.println("Valor para deposito: R$");
 				float valorDeposito = leia.nextFloat();
 				this.depositar(valorDeposito);
 				break;
+				
+			case 5:
+				System.out.println("Insira a conta para transferência");
+				Conta conta = new Conta();
+				int numeroConta = Integer.parseInt(leia.nextLine());
+				conta.setNumConta(numeroConta);
+				System.out.println("Valor para transferência");
+				float valorTransferencia = leia.nextFloat();
+				this.transferir(conta, valorTransferencia);
+				break;
+				
 			case 0:
 				sair = false;
 				break;
@@ -173,6 +187,16 @@ public class Conta {
 		}
 	}
 
+	public void transferir(Conta conta, float valor) {
+		
+		if (this.getSaldo() < valor) {
+			System.out.println("Saldo insuficiente para a operação");
+		} else {
+			this.setSaldo(this.getSaldo() - valor);
+			conta.setSaldo(conta.getSaldo() + valor);
+		}
+		
+	}
 
 }
 
