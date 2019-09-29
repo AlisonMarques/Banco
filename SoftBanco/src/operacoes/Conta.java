@@ -98,13 +98,14 @@ public class Conta {
 				break;
 				
 			case 5:
-				System.out.println("Insira a conta para transferência");
 				Conta conta = new Conta();
-				int numeroConta = Integer.parseInt(leia.nextLine());
+				System.out.println("Insira a conta para transferência");
+				
+				int numeroConta = (leia.nextInt());
 				conta.setNumConta(numeroConta);
 				System.out.println("Valor para transferência");
 				float valorTransferencia = leia.nextFloat();
-				this.transferir(conta, valorTransferencia);
+				transferir(conta, valorTransferencia);
 				break;
 				
 			case 0:
